@@ -1,4 +1,4 @@
-package com.example.searching;
+package com.example.sorting;
 
 public class BubbleSort {
 
