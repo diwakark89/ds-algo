@@ -1,6 +1,6 @@
 package com.example.sorting;
 
-public class MergeSort {
+public class MergeSort implements ArraySort{
 
 
     public void merge(int[] arr, int l, int r ){
@@ -55,7 +55,7 @@ public class MergeSort {
         }
     }
 
-    public void sort(int[] arr) {
+    public void sort(int[] arr,int n) {
         merge(arr,0,arr.length-1 );
     }
 }

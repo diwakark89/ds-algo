@@ -10,37 +10,48 @@ public class SortDriver {
         int[] arr3 =new int[]{79,69,56,45,32,22,11};
 //        runBubbleSort(sd,arr1,arr2,arr3);
 //        runMergeSort(sd,arr1,arr2,arr3);
-        runQuickSort(sd,arr1,arr2,arr3);
+//        runQuickSort(sd,arr1,arr2,arr3);
+        runHeapSort(sd,arr1,arr2,arr3);
 
     }
 
-    private static void runQuickSort(SortDriver sd, int[] arr1, int[] arr2, int[] arr3) {
-        QuickSort sort=new QuickSort();
-        sort.sort(arr1,0, arr1.length-1);
+    private static void runHeapSort(SortDriver sd, int[] arr1, int[] arr2, int[] arr3) {
+        ArraySort sort=new HeapSort();
+        sort.sort(arr1, arr1.length);
         sd.printArray(arr1);
-        sort.sort(arr2,0, arr2.length-1);
+        sort.sort(arr2, arr2.length);
         sd.printArray(arr2);
-        sort.sort(arr3,0, arr3.length-1);
+        sort.sort(arr3, arr3.length);
+        sd.printArray(arr3);
+    }
+
+    private static void runQuickSort(SortDriver sd, int[] arr1, int[] arr2, int[] arr3) {
+        ArraySort sort=new QuickSort();
+        sort.sort(arr1, arr1.length-1);
+        sd.printArray(arr1);
+        sort.sort(arr2, arr2.length-1);
+        sd.printArray(arr2);
+        sort.sort(arr3, arr3.length-1);
         sd.printArray(arr3);
     }
 
     private static void runMergeSort(SortDriver sd, int[] arr1, int[] arr2, int[] arr3) {
-        MergeSort sort=new MergeSort();
-        sort.sort(arr1);
+        ArraySort sort=new MergeSort();
+        sort.sort(arr1,arr1.length);
         sd.printArray(arr1);
-        sort.sort(arr2);
+        sort.sort(arr2,arr2.length);
         sd.printArray(arr2);
-        sort.sort(arr3);
+        sort.sort(arr3,arr3.length);
         sd.printArray(arr3);
     }
 
     private static void runBubbleSort(SortDriver sd, int[] arr1, int[] arr2, int[] arr3){
-        BubbleSort sort=new BubbleSort();
-        sort.sort(arr1);
+        ArraySort sort=new BubbleSort();
+        sort.sort(arr1,arr1.length);
         sd.printArray(arr1);
-        sort.sort(arr2);
+        sort.sort(arr2,arr2.length);
         sd.printArray(arr2);
-        sort.sort(arr3);
+        sort.sort(arr3,arr3.length);
         sd.printArray(arr3);
     }
     private void printArray(int[] arr){

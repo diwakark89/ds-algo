@@ -1,12 +1,12 @@
 package com.example.sorting;
 
-public class BubbleSort {
+public class BubbleSort implements ArraySort {
 
-    public void sort(int arr[]){
+    public void sort(int arr[],int n){
 
         boolean swap=true;
         int itr=1;
-        for(int i=arr.length-1;i>=0&&swap;i-- ){
+        for(int i=n-1;i>=0&&swap;i-- ){
             swap=false;
             for (int j=0;j<i;j++){
                 if(arr[j]>arr[j+1]){

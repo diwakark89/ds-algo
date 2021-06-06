@@ -1,6 +1,6 @@
 package com.example.sorting;
 
-public class QuickSort {
+public class QuickSort implements ArraySort {
     private int partition(int arr[], int l, int h) {
         int pivot = arr[h];
         int i = l - 1;
@@ -20,11 +20,15 @@ public class QuickSort {
         arr[i] = temp;
     }
 
-    public void sort(int[] arr, int l, int h) {
+    public void quickSort(int[] arr, int l, int h) {
         if (l < h) {
             int pivot = partition(arr, l, h);
-            sort(arr, l, pivot - 1);
-            sort(arr, pivot + 1, h);
+            quickSort(arr, l, pivot - 1);
+            quickSort(arr, pivot + 1, h);
         }
+    }
+
+    public void sort(int[] arr, int n) {
+        quickSort(arr,0,n);
     }
 }
