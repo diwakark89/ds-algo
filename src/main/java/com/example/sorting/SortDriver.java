@@ -11,8 +11,19 @@ public class SortDriver {
 //        runBubbleSort(sd,arr1,arr2,arr3);
 //        runMergeSort(sd,arr1,arr2,arr3);
 //        runQuickSort(sd,arr1,arr2,arr3);
-        runHeapSort(sd,arr1,arr2,arr3);
+//        runHeapSort(sd,arr1,arr2,arr3);
+        runCountSort(sd,arr1,arr2,arr3);
 
+    }
+
+    private static void runCountSort(SortDriver sd, int[] arr1, int[] arr2, int[] arr3) {
+        ArraySort sort=new CountingSort();
+        sort.sort(arr1, arr1.length);
+        sd.printArray(arr1);
+        sort.sort(arr2, arr2.length);
+        sd.printArray(arr2);
+        sort.sort(arr3, arr3.length);
+        sd.printArray(arr3);
     }
 
     private static void runHeapSort(SortDriver sd, int[] arr1, int[] arr2, int[] arr3) {
