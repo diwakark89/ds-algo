@@ -1,4 +1,4 @@
-package com.example.sorting;
+package com.data.structure.sorting;
 
 public class QuickSort implements ArraySort {
     private int partition(int arr[], int l, int h) {

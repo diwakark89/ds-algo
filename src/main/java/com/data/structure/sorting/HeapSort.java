@@ -1,4 +1,4 @@
-package com.example.sorting;
+package com.data.structure.sorting;
 
 public class HeapSort implements ArraySort {
 
