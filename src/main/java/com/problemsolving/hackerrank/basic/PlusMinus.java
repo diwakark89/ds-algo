@@ -1,4 +1,4 @@
-package com.problemsolving.hackerrank;
+package com.problemsolving.hackerrank.basic;
 
 import java.util.Arrays;
 import java.util.List;
