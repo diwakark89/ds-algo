@@ -16,15 +16,14 @@ public class CountingValleys {
         if(steps == 0 || steps ==1){
             return count;
         }
-        for (int i=0;i<actionArr.length;i++){
-            char ch=actionArr[i];
-            if(ch=='U'){
+        for (char ch : actionArr) {
+            if (ch == 'U') {
                 ++lvl;
             }
-            if(ch=='D'){
+            if (ch == 'D') {
                 --lvl;
             }
-            if(lvl==0 && ch=='U'){
+            if (lvl == 0 && ch == 'U') {
                 ++count;
             }
         }
