@@ -1,7 +1,7 @@
 package com.data.structure.sorting;
 
 public class QuickSort implements ArraySort {
-    private int partition(int arr[], int l, int h) {
+    private int partition(int[] arr, int l, int h) {
         int pivot = arr[h];
         int i = l - 1;
         for (int j = l; j < h; j++) {

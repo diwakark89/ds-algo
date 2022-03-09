@@ -1,4 +1,4 @@
-package com.data.structure.algorithms.sorting;
+package com.data.structure.sorting;
 
 public class SelectionSort {
     public static void main(String args[]) {
