@@ -1,4 +1,4 @@
-package com.data.structure.sorting;
+package com.data.structure.algorithms.sorting;
 
 public class SortDriver {
     public static final int QUICK_SORT = 1;

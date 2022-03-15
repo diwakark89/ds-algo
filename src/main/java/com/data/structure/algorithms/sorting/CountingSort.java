@@ -1,4 +1,4 @@
-package com.data.structure.sorting;
+package com.data.structure.algorithms.sorting;
 
 public class CountingSort implements ArraySort{
 
