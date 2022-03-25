@@ -1,32 +1,45 @@
-package com.data.structure.test;
+package com.problemsolving.company.zalando;
 
 import java.util.Arrays;
 
 public class Assassins {
     public static void main(String []args){
         Assassins as=new Assassins();
-        String [] strAray1={"X.....>","..v..X.",".>..X..","A......"};
-        String [] strAray2={"...Xv", "AX..^", ".XX.."};
-        System.out.println(as.Solution(strAray1));
-        System.out.println(as.Solution(strAray2));
+
+//        String [] strAray1={"X.....>","..v..X.",".>..X..","A......"};
+//        System.out.println(as.Solution(strAray1));
+//        String [] strAray2={"...Xv", "AX..^", ".XX.."};
+//        System.out.println(as.Solution(strAray2));
+//        String [] strAray3={"A.v","..."};
+//        System.out.println(as.Solution(strAray3));
+//
+//        String [] strAray5={"...",">.A"};
+//        System.out.println(as.Solution(strAray5));
+
 
     }
     public boolean Solution(String [] B){
         char[][] charArray=new char[B.length][B[0].length()];
         char[][] sol=new char[B.length][B[0].length()];
-        int i=0;
+        int i=0,j=0;
         for(String str: B){
             charArray[i++]= str.toCharArray();
         }
         printArray(charArray);
         System.out.println("======");
-        charArray=fillArray(charArray);
+        fillArray(charArray);
         printArray(charArray);
-        if (!solveMazeUtil(charArray, 0, 0, sol)) {
-            return false;
+        i=0;j=0;
+        while(i<B.length){
+            while(j<B[0].length()){
+                if(charArray[i][j]=='A'){
+                    break;
+                }
+                ++j;
+            }
+            ++i;
         }
-
-        return true;
+        return solveMazeUtil(charArray, i, j, sol);
     }
 
     private void printArray(char[][] charArray) {
@@ -35,82 +48,78 @@ public class Assassins {
         }
     }
 
-    private char[][] fillArray(char[][] charArray) {
+    private void fillArray(char[][] charArray) {
         int M=charArray.length;
         int N=charArray[0].length;
         for(int x=0;x<M;x++){
             for(int y=0;y<N;y++){
-                if(charArray[x][y]=='>' && y < N-1){
+                if(charArray[x][y] == '>'){
                     int j=y;
-                    while(j < N&& charArray[x][j] != 'X' ){
+                    while(j < N && charArray[x][j] != '.' ){
                         charArray[x][j]='Y';
                         ++j;
                     }
                 }
+
                 if(x<M-1 && charArray[x][y]=='v' ){
                     int i=x;
-                    while(i<M && charArray[i][y]!='X' ){
+                    while(i<M && charArray[i][y]!='.' ){
                         charArray[i][y]='Y';
                         ++i;
                     }
                 }
                 if(charArray[x][y]=='<' && y>0){
                     int j=y;
-                    while(j>=0&& charArray[x][j]!='X' ){
+                    while(j>=0&& charArray[x][j]!='.' ){
                         charArray[x][j]='Y';
                         --j;
                     }
                 }
                 if(charArray[x][y]=='^' && x>0){
                     int i=x;
-                    while(i>=0 && charArray[i][y]!='X' ){
+                    while(i>=0 && charArray[i][y]=='.' ){
                         charArray[i][y]='Y';
                         --i;
                     }
                 }
             }
         }
-        return charArray;
     }
 
-    /* A recursive utility function to solve Maze
-       problem */
-    boolean solveMazeUtil(char[][] maze, int x, int y,
-                          char[][] sol)
+
+    boolean solveMazeUtil(char[][] maze, int x, int y,  char[][] sol)
     {
-        // if (x, y is goal) return true
-        if (x == maze[0].length && y == maze.length) {
+        if (x == maze.length-1 && y == maze[0].length-1  && maze[x][y] == '.') {
             sol[x][y] = '.';
             return true;
         }
 
-        // Check if maze[x][y] is valid
         if (isSafe(maze, x, y)) {
-            // mark x, y as part of solution path
+            if (sol[x][y] == '.')
+                return false;
             sol[x][y] = '.';
 
-            /* Move forward in x direction */
             if (solveMazeUtil(maze, x + 1, y, sol))
                 return true;
 
-            /* If moving in x direction doesn't give
-               solution then  Move down in y direction */
             if (solveMazeUtil(maze, x, y + 1, sol))
                 return true;
 
-            /* If none of the above movements works then
-               BACKTRACK: unmark x, y as part of solution
-               path */
-            sol[x][y] = 0;
+            if (solveMazeUtil(maze, x - 1, y, sol))
+                return true;
+
+            if (solveMazeUtil(maze, x, y - 1, sol))
+                return true;
+
+            sol[x][y] = 'X';
             return false;
         }
 
         return false;
     }
-    boolean isSafe(char[][] maze, int x, int y)
-    {
-        // if (x, y outside maze) return false
-        return (x >= 0 && x < maze[0].length && y >= 0 && y < maze.length && maze[x][y] == '.');
+
+    boolean isSafe( char maze[][], int x, int y) {
+        return (x >= 0 && x < maze.length && y >= 0  && y < maze[0].length && maze[x][y] == '.');
     }
 
 

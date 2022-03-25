@@ -1,4 +1,4 @@
-package com.data.structure.test;
+package com.problemsolving.company.zalando;
 
 public class StringRemove {
     public static void main(String []args){
