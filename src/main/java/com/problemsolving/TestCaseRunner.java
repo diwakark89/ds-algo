@@ -1,7 +1,6 @@
 package com.problemsolving;
 
 import com.problemsolving.company.zalando.Assassins;
-import com.problemsolving.company.zalando.TestClass1;
 import com.problemsolving.geeksforgeeks.NextGreaterElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,9 +32,16 @@ public class TestCaseRunner {
 
     }
 
-    @ParameterizedTest(name = "{index}: {0}")
+    @ParameterizedTest(name = "{index}: {0}: {1}")
     @MethodSource("stringMatrix")
     void shouldFindThePath(String []array, boolean expected) {
+        boolean result= assassins.Solution(array);
+        assertEquals(expected,result);
+    }
+
+    @ParameterizedTest(name = "{index}: {0}: {1}")
+    @MethodSource("failingTestCase")
+    void shouldFindThePath2(String []array, boolean expected) {
         boolean result= assassins.Solution(array);
         assertEquals(expected,result);
     }
@@ -43,10 +49,16 @@ public class TestCaseRunner {
     static Stream<Arguments> stringMatrix() {
         return Stream.of(
                 Arguments.of(new String[]{"X.....>", "..v..X.", ".>..X..", "A......"}, false),
-                Arguments.of(new String[]{"...Xv", "AX..^", ".XX.."}, false),
+                Arguments.of(new String[]{"...Xv", "AX..^", ".XX.."}, true),
                 Arguments.of(new String[]{"A.v","..."}, false),
-                Arguments.of(new String[]{"...",">.A"}, false)
+                Arguments.of(new String[]{"...",">.A"}, false),
+                Arguments.of(new String[]{"X.vX","...A","^^.."}, true)
                 );
+    }
+    static Stream<Arguments> failingTestCase() {
+        return Stream.of(
+                Arguments.of(new String[]{"X.....>", "..v..X.", ".>..X..", "A......"}, false)
+        );
     }
 
     static Stream<Arguments> simpleArrayParameters() {
