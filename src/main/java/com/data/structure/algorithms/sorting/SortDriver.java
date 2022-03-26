@@ -6,6 +6,7 @@ public class SortDriver {
     public static final int HEAP_SORT = 3;
     public static final int COUNTING_SORT = 4;
     public static final int MERGE_SORT = 5;
+    public static final int RADIX_SORT = 6;
 
 
     public static void main(String[] args) {
@@ -18,36 +19,40 @@ public class SortDriver {
         array[1] = arr2;
         array[2] = arr3;
 
-        sd.sortArray(array, BUBBLE_SORT);
+        sd.sortArray(array, RADIX_SORT);
 
     }
 
-    public void sortArray(int[][] arr, int sortValue) {
+    public void sortArray(int[][] arrayOfArray, int sortValue) {
         ArraySort sort;
-        for (int i = 0; i < arr.length; i++) {
+        for (int[] arr : arrayOfArray) {
             switch (sortValue) {
                 case QUICK_SORT:
                     sort = new QuickSort();
-                    sort.sort(arr[i], arr[i].length - 1);
+                    sort.sort(arr, arr.length - 1);
                     break;
                 case COUNTING_SORT:
                     sort = new CountingSort();
-                    sort.sort(arr[i], arr[i].length);
+                    sort.sort(arr, arr.length);
                     break;
                 case HEAP_SORT:
                     sort = new HeapSort();
-                    sort.sort(arr[i], arr[i].length);
+                    sort.sort(arr, arr.length);
                     break;
                 case MERGE_SORT:
                     sort = new MergeSort();
-                    sort.sort(arr[i], arr[i].length);
+                    sort.sort(arr, arr.length);
                     break;
                 case BUBBLE_SORT:
                     sort = new BubbleSort();
-                    sort.sort(arr[i], arr[i].length);
+                    sort.sort(arr, arr.length);
+                    break;
+                case RADIX_SORT:
+                    sort = new RadixSort();
+                    sort.sort(arr, arr.length);
                     break;
             }
-            printArray(arr[i]);
+            printArray(arr);
 
         }
 
