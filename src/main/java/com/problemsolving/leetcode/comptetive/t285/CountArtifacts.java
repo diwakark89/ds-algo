@@ -1,4 +1,4 @@
-package com.problemsolving.leetcode.comptetive;
+package com.problemsolving.leetcode.comptetive.t285;
 
 public class CountArtifacts {
     public static void main(String []args){

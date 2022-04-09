@@ -1,17 +1,17 @@
 package com.problemsolving.company.zalando;
 
-public class TestClass2 {
+public class ZalandoTestClass3 {
     public static void main(String[]args){
-        TestClass2 ts1=new TestClass2();
+        ZalandoTestClass3 ts1=new ZalandoTestClass3();
 //        String s = "?ab??a";
 //        String s = "?a?";
 
 //        String s = "bab??a";
         String s = "??b";
-        System.out.println(ts1.solution(s));
+        System.out.println(ts1.Solution(s));
     }
 
-    private String solution(String S) {
+    public String Solution(String S) {
         StringBuilder sb=new StringBuilder(S);
         int i=0;
         int j=S.length()-1;
