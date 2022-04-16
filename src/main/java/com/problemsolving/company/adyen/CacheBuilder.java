@@ -1,9 +1,6 @@
 package com.problemsolving.company.adyen;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CacheBuilder {
     public static void main(String[]args){
@@ -45,6 +42,7 @@ public class CacheBuilder {
     static class CardTypeCacheImpl implements CardTypeCache{
 
         Map<Long, BinRange> cardTypeCache;
+        NavigableMap<Long, BinRange> nmap  = new TreeMap<>();
 
         public CardTypeCacheImpl(List<BinRange> binRanges){
             cardTypeCache=new HashMap<>();
@@ -75,6 +73,7 @@ public class CacheBuilder {
         private void buildCache(List<BinRange> binRanges){
             for (BinRange binRange:binRanges){
                 cardTypeCache.put(Long.valueOf(binRange.start),binRange);
+                nmap.put(Long.valueOf(binRange.start),binRange);
             }
         }
     }
