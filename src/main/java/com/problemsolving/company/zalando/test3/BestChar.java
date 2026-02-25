@@ -1,25 +1,29 @@
 package com.problemsolving.company.zalando.test3;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class BestChar {
     public static void main(String[]args){
         BestChar ts1=new BestChar();
         String output;
         output=ts1.solution("hello");
-        assertThat(output).isEqualTo("l");
+        assertEquals(output, "l");
 
         output=ts1.solution("helloo");
-        assertThat(output).isEqualTo("l");
+        assertEquals(output, "l");
 
         output=ts1.solution("aaaa");
-        assertThat(output).isEqualTo("a");
+        assertEquals(output, "a");
 
         output=ts1.solution("zaz");
-        assertThat(output).isEqualTo("z");
+        assertEquals(output, "z");
 
         output=ts1.solution("zzzzaza");
-        assertThat(output).isEqualTo("z");
+        assertEquals(output, "z");
+    }
+
+    private static void assertEquals(String actual, String expected) {
+        if (expected == null ? actual != null : !expected.equals(actual)) {
+            throw new AssertionError("Expected \"" + expected + "\" but got \"" + actual + "\"");
+        }
     }
 
     String solution(String S) {

@@ -1,6 +1,5 @@
 package com.problemsolving.company.zalando.test3;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class DivisibleBy3 {
     public static void main(String[]args){
@@ -8,13 +7,19 @@ public class DivisibleBy3 {
         int val;
 
         val=ts3.solution("23");
-        assertThat(val).isEqualTo(7);
+        assertEquals(val, 7);
 
         val=ts3.solution("0081");
-        assertThat(val).isEqualTo(11);
+        assertEquals(val, 11);
 
         val=ts3.solution("022");
-        assertThat(val).isEqualTo(9);
+        assertEquals(val, 9);
+    }
+
+    private static void assertEquals(int actual, int expected) {
+        if (actual != expected) {
+            throw new AssertionError("Expected " + expected + " but got " + actual);
+        }
     }
 
     public int solution(String S){

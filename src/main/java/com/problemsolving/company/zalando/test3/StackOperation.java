@@ -2,44 +2,48 @@ package com.problemsolving.company.zalando.test3;
 
 import java.util.Stack;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class StackOperation {
     public static void main(String[] args) {
         StackOperation ts2 = new StackOperation();
         int val;
 
         val = ts2.solution("4 5 6 - 7 +");
-        assertThat(val).isEqualTo(8);
+        assertEquals(val, 8);
         val = ts2.solution("13 DUP 4 POP 5 DUP + DUP + -");
-        assertThat(val).isEqualTo(7);
+        assertEquals(val, 7);
         val = ts2.solution("5 6 + -");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
         val = ts2.solution("3 DUP 5 - -");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
         val = ts2.solution("1048575 DUP +");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
 
         val = ts2.solution("1 POP 1");
-        assertThat(val).isEqualTo(1);
+        assertEquals(val, 1);
 
         val = ts2.solution("1 POP");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
 
         val = ts2.solution("-1 1");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
 
         val = ts2.solution("DUP 1");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
 
         val = ts2.solution("POP 1");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
 
         val = ts2.solution("0 0 DUP");
-        assertThat(val).isEqualTo(0);
+        assertEquals(val, 0);
 
         val = ts2.solution("0 0 DUP -1");
-        assertThat(val).isEqualTo(-1);
+        assertEquals(val, -1);
+    }
+
+    private static void assertEquals(int actual, int expected) {
+        if (actual != expected) {
+            throw new AssertionError("Expected " + expected + " but got " + actual);
+        }
     }
 
 
